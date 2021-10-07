@@ -179,7 +179,7 @@ public class Main extends PApplet
         if (trials.get(trialNum) == i) // see if current button is the target
             fill(255,0,0); // if so, fill red
         else
-            fill(174, 174, 174); // if not, fill gray
+            fill(200); // if not, fill gray
 
         rect(bounds.x, bounds.y, bounds.width, bounds.height);
     }

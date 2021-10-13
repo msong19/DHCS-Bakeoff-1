@@ -1,10 +1,8 @@
 import java.awt.AWTException;
 import java.awt.Rectangle;
 import java.awt.Robot;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.List;
-import java.util.Collections;
+import java.util.*;
+
 import processing.core.PApplet;
 
 
@@ -109,7 +107,13 @@ public class Main4 extends PApplet
 
     public void keyPressed() // test to see if hit was in target!
     {
-
+        Map<Character, Integer> map = new HashMap<>();
+        char[] keys = new char[]{'1', '2', '3', '4', 'q', 'w', 'e', 'r', 'a', 's', 'd', 'f', 'z', 'x', 'c', 'v'};
+        for (int i = 0; i < 16; i++) {
+            map.put(keys[i], i);
+        }
+        Rectangle bounds = getButtonLocation(map.get(key));
+        robot.mouseMove(bounds.x + 20, bounds.y + 40);
     }
 
     public void mousePressed() // test to see if hit was in target!

@@ -90,19 +90,6 @@ public class Main3 extends PApplet
 
         fill(255, 0, 0, 200); // set fill color to translucent red
 
-        if(mouseX < width/4) {
-            mouseX = width/4;
-        }
-        if(mouseX > (width*3)/4) {
-            mouseX = (width * 3) / 4;
-        }
-        if(mouseY < height/4) {
-            mouseY = height / 4;
-        }
-        if(mouseY > (height*3)/4) {
-            mouseY = (height * 3) / 4;
-        }
-
     }
 
     public void keyPressed() // test to see if hit was in target!

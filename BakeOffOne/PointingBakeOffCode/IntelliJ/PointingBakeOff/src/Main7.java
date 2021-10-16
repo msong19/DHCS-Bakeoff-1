@@ -6,7 +6,7 @@ import java.util.Collections;
 import processing.core.PApplet;
 
 
-public class Main3 extends PApplet
+public class Main7 extends PApplet
 {
     //when in doubt, consult the Processsing reference: https://processing.org/reference/
 
@@ -20,13 +20,13 @@ public class Main3 extends PApplet
     int hits = 0; //number of successful clicks
     int misses = 0; //number of missed clicks
     Robot robot; //initialized in setup
-    final int highlightWidth = 8;
+    int highlightWidth = 8;
 
     int numRepeats = 1; //sets the number of times each button repeats in the test
 
 
     public static void main(String[] args) {
-        PApplet.main("Main3");
+        PApplet.main("Main7");
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Main3 extends PApplet
     public void setup()
     {
         //noCursor(); // hides the system cursor if you want
-        // noStroke(); //turn off all strokes, we're just using fills here (can change this if you want)
+        noStroke(); //turn off all strokes, we're just using fills here (can change this if you want)
         textFont(createFont("Arial",16)); //sets the font to Arial size 16
         textAlign(CENTER);
         frameRate(60); //normally you can't go much higher than 60 FPS.
@@ -88,8 +88,8 @@ public class Main3 extends PApplet
         text((trialNum + 1) + " of " + trials.size(), 40, 20); //display what trial the user is on
 
         for (int i = 0; i < 16; i++) {// for all button
-            Rectangle bounds = getButtonLocation(i);
-            if ((mouseX > bounds.x && mouseX < bounds.x + bounds.width) && (mouseY > bounds.y && mouseY < bounds.y + bounds.height)) {
+             if (trials.get(trialNum) == i && frameCount % 30 < 20) {
+                Rectangle bounds = getButtonLocation(i);
                 fill(161, 252, 255);
                 rect(bounds.x-highlightWidth, bounds.y-highlightWidth, bounds.width+2*highlightWidth, bounds.height+2*highlightWidth);
             }
@@ -98,7 +98,7 @@ public class Main3 extends PApplet
 
         fill(255, 0, 0, 200); // set fill color to translucent red
         ellipse(mouseX, mouseY, 20, 20); //draw user cursor as a circle with a diameter of 20
-  
+
     }
 
 

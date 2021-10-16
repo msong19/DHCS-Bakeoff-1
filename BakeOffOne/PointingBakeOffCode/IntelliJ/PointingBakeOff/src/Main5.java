@@ -6,7 +6,7 @@ import java.util.Collections;
 import processing.core.PApplet;
 
 
-public class Main3 extends PApplet
+public class Main5 extends PApplet
 {
     //when in doubt, consult the Processsing reference: https://processing.org/reference/
 
@@ -26,7 +26,7 @@ public class Main3 extends PApplet
 
 
     public static void main(String[] args) {
-        PApplet.main("Main3");
+        PApplet.main("Main5");
     }
 
     @Override
@@ -90,10 +90,12 @@ public class Main3 extends PApplet
         for (int i = 0; i < 16; i++) {// for all button
             Rectangle bounds = getButtonLocation(i);
             if ((mouseX > bounds.x && mouseX < bounds.x + bounds.width) && (mouseY > bounds.y && mouseY < bounds.y + bounds.height)) {
-                fill(161, 252, 255);
-                rect(bounds.x-highlightWidth, bounds.y-highlightWidth, bounds.width+2*highlightWidth, bounds.height+2*highlightWidth);
+                fill(114, 252, 139);
+                rect(bounds.x, bounds.y, bounds.width, bounds.height);
             }
-            drawButton(i); //draw button
+            else {
+                drawButton(i); //draw button
+            }
         }
 
         fill(255, 0, 0, 200); // set fill color to translucent red

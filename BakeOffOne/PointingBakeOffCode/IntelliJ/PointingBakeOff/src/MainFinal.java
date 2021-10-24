@@ -16,12 +16,14 @@ public class MainFinal extends PApplet
     ArrayList<Integer> trials = new ArrayList<Integer>(); //contains the order of buttons that activate in the test
     int trialNum = 0; //the current trial number (indexes into trials array above)
     int startTime = 0; // time starts when the first click is captured
+    float prevClickTime = 0;
     int finishTime = 0; //records the time of the final click
     int hits = 0; //number of successful clicks
     int misses = 0; //number of missed clicks
     Robot robot; //initialized in setup
+    int participantID = 1;
 
-    int numRepeats = 1; //sets the number of times each button repeats in the test
+    int numRepeats = 20; //sets the number of times each button repeats in the test
 
 
     public static void main(String[] args) {
@@ -115,18 +117,26 @@ public class MainFinal extends PApplet
         }
 
         Rectangle bounds = getButtonLocation(trials.get(trialNum));
-
+        
+        int success = 0;
         //check to see if cursor was inside button
         if ((mouseX > bounds.x && mouseX < bounds.x + bounds.width) && (mouseY > bounds.y && mouseY < bounds.y + bounds.height)) // test to see if hit was within bounds
         {
-            System.out.println("HIT! " + trialNum + " " + (millis() - startTime)); // success
+            // System.out.println("HIT! " + trialNum + " " + (millis() - startTime)); // success
+            success = 1;
             hits++;
         } else
         {
-            System.out.println("MISSED! " + trialNum + " " + (millis() - startTime)); // fail
+            // System.out.println("MISSED! " + trialNum + " " + (millis() - startTime)); // fail
             misses++;
         }
 
+        float currTime = millis();
+        float timeTaken = currTime - prevClickTime;
+        prevClickTime = currTime;
+        
+        System.out.println(trialNum + "," + participantID + "," + mouseX + "," + mouseY + "," + 
+                          (bounds.x + bounds.width)/2 + "," + (bounds.y + bounds.height)/2 + "," + buttonSize + "," + timeTaken/1000.0 + "," + success);
         trialNum++; // Increment trial number
 
         //in this example design, I move the cursor back to the middle after each click

@@ -21,6 +21,8 @@ public class MainFinal extends PApplet
     int hits = 0; //number of successful clicks
     int misses = 0; //number of missed clicks
     Robot robot; //initialized in setup
+    int prevCursorX = 0;
+    int prevCursorY = 0;
     int participantID = 1;
 
     int numRepeats = 20; //sets the number of times each button repeats in the test
@@ -135,9 +137,11 @@ public class MainFinal extends PApplet
         float timeTaken = currTime - prevClickTime;
         prevClickTime = currTime;
         
-        System.out.println(trialNum + "," + participantID + "," + mouseX + "," + mouseY + "," + 
+        System.out.println(trialNum + "," + participantID + "," + prevCursorX + "," + prevCursorY + "," + 
                           (bounds.x + bounds.width)/2 + "," + (bounds.y + bounds.height)/2 + "," + buttonSize + "," + timeTaken/1000.0 + "," + success);
         trialNum++; // Increment trial number
+        prevCursorX = mouseX;
+        prevCursorY = mouseY;
 
         //in this example design, I move the cursor back to the middle after each click
         //robot.mouseMove(width/2, (height)/2); //on click, move cursor to roughly center of window!
